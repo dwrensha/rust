@@ -1,5 +1,4 @@
 RUSTC := $(RUSTC) --out-dir $(TMPDIR) -L $(TMPDIR)
-CC := $(CC) -L $(TMPDIR)
 
 RUN = $(TMPDIR)/$(1)
 FAILS = $(TMPDIR)/$(1) && exit 1 || exit 0
