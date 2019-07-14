@@ -37,6 +37,7 @@ pub(crate) fn add_configuration(
     sess: &mut Session,
     codegen_backend: &dyn CodegenBackend,
 ) {
+/* commented out for fuzzing because this leaks memory
     let tf = sym::target_feature;
 
     let (target_features, unstable_target_features) = codegen_backend.target_features_cfg(sess);
@@ -49,7 +50,7 @@ pub(crate) fn add_configuration(
 
     if sess.crt_static(None) {
         cfg.insert((tf, Some(sym::crt_dash_static)));
-    }
+    } */
 }
 
 /// Ensures that all target features required by the ABI are present.
