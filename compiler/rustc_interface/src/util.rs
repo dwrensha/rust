@@ -48,7 +48,7 @@ pub fn add_configuration(
     cfg: &mut CrateConfig,
     sess: &mut Session,
     codegen_backend: &dyn CodegenBackend,
-) {
+) {/* commented out for fuzzing because this leaks memory
     let tf = sym::target_feature;
 
     let target_features = codegen_backend.target_features(sess);
@@ -58,7 +58,7 @@ pub fn add_configuration(
 
     if sess.crt_static(None) {
         cfg.insert((tf, Some(sym::crt_dash_static)));
-    }
+    } */
 }
 
 pub fn create_session(
