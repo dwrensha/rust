@@ -288,10 +288,11 @@ pub trait MutVisitor: Sized {
 /// method. Abort the program if the closure panics.
 //
 // No `noop_` prefix because there isn't a corresponding method in `MutVisitor`.
-pub fn visit_clobber<T, F>(t: &mut T, f: F)
+pub fn visit_clobber<T: Clone, F>(t: &mut T, f: F)
 where
     F: FnOnce(T) -> T,
 {
+    /*
     unsafe {
         // Safe because `t` is used in a read-only fashion by `read()` before
         // being overwritten by `write()`.
@@ -300,6 +301,12 @@ where
             .unwrap_or_else(|_| process::abort());
         ptr::write(t, new_t);
     }
+    */
+
+
+    let old_t = t.clone();
+    let new_t = f(old_t);
+    *t = new_t;
 }
 
 // No `noop_` prefix because there isn't a corresponding method in `MutVisitor`.
