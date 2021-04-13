@@ -1720,7 +1720,7 @@ impl<'a> Parser<'a> {
                     return Err(err);
                 }
             } else {
-                unreachable!()
+                (Vec::new(), None)
             }
         };
         attrs.extend(inner_attrs);
